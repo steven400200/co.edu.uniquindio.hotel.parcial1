@@ -1,31 +1,27 @@
 package co.edu.uniquidio.hotel2.model;
-
 import co.edu.uniquidio.hotel2.model.builder.HotelBuilder;
 import co.edu.uniquidio.hotel2.services.IClienteCrud;
+import co.edu.uniquidio.hotel2.services.IConsultaServices;
 import co.edu.uniquidio.hotel2.services.IHabitacionCrud;
 import co.edu.uniquidio.hotel2.services.IReservaCrud;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class Hotel implements IClienteCrud, IHabitacionCrud, IReservaCrud {
-
+public class Hotel implements IClienteCrud, IHabitacionCrud, IReservaCrud, IConsultaServices {
     private String nombre;
 
     public Hotel(String nombre) {
         this.nombre = nombre;
     }
-
-    public static HotelBuilder builder() {
-        return new HotelBuilder();
-    }
-
     private List<Habitacion> listaHabitaciones = new ArrayList<>();
     private List<Reserva> listaReservas = new ArrayList<>();
     private List<Cliente> listaClientes = new ArrayList<>();
     private List<Servicio> listaServicios = new ArrayList<>();
+
+    public static HotelBuilder builder() {
+        return new HotelBuilder();
+    }
 
     public String getNombre() {
         return nombre;
@@ -33,10 +29,6 @@ public class Hotel implements IClienteCrud, IHabitacionCrud, IReservaCrud {
 
     public List<Habitacion> getListaHabitaciones() {
         return listaHabitaciones;
-    }
-
-    public void setListaHabitaciones(List<Habitacion> listaHabitaciones) {
-        this.listaHabitaciones = listaHabitaciones;
     }
 
     public List<Reserva> getListaReservas() {
@@ -51,8 +43,7 @@ public class Hotel implements IClienteCrud, IHabitacionCrud, IReservaCrud {
         return listaServicios;
     }
 
-
-    //LOGICA DEL CRUD CLIENTE---------------------------------------------------------------------------
+    //LOGICA DEL CRUD CLIENTE
     @Override
     public boolean crearCliente(String nombre, String dni) {
         Cliente clienteExistente = obtenerCliente(dni);
@@ -67,19 +58,6 @@ public class Hotel implements IClienteCrud, IHabitacionCrud, IReservaCrud {
             return false;
         }
     }
-
-
-    @Override
-    public boolean eliminarCliente(String dni) {
-        Cliente clienteExistente = obtenerCliente(dni);
-        if (clienteExistente != null) {
-            getListaClientes().remove(clienteExistente);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     @Override
     public boolean actualizarCliente(String nombre, String dniActual, String dniNueva) {
         Cliente clienteExistente = obtenerCliente(dniActual);
@@ -92,7 +70,6 @@ public class Hotel implements IClienteCrud, IHabitacionCrud, IReservaCrud {
             return false;
         }
     }
-
     @Override
     public String obtenerDatosCliente(String dni) {
         Cliente clienteExistente = obtenerCliente(dni);
@@ -101,7 +78,16 @@ public class Hotel implements IClienteCrud, IHabitacionCrud, IReservaCrud {
         }
         return "";
     }
-
+    @Override
+    public boolean eliminarCliente(String dni) {
+        Cliente clienteExistente = obtenerCliente(dni);
+        if (clienteExistente != null) {
+            getListaClientes().remove(clienteExistente);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     private Cliente obtenerCliente(String dni) {
         Cliente clienteExistente = null;
@@ -114,16 +100,14 @@ public class Hotel implements IClienteCrud, IHabitacionCrud, IReservaCrud {
         return clienteExistente;
 
     }
-
     public void imprimirListaClientes() {
-        System.out.println("Imprimiendo la lista de los clientes\n");
-
+        System.out.println("Lista de clientes:\n");
         for (Cliente cliente : listaClientes)
             System.out.println(cliente + " \n");
 
     }
 
-    //LOGICA DEL CRUD HABITACION------------------------------------------------------------------------
+    //LOGICA DEL CRUD HABITACION
     @Override
     public boolean crearHabitacion(int numeroHabitacion, TipoHabitacion tipoHabitacion) {
         Habitacion habitacionExistente = obtenerHabitacion(numeroHabitacion);
@@ -139,18 +123,6 @@ public class Hotel implements IClienteCrud, IHabitacionCrud, IReservaCrud {
             return false;
         }
     }
-
-    @Override
-    public boolean eliminarHabitacion(int numeroHabitacion) {
-        Habitacion habitacionExistente = obtenerHabitacion(numeroHabitacion);
-        if (habitacionExistente != null) {
-            getListaHabitaciones().remove(habitacionExistente);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     @Override
     public boolean actualizarHabitacion(int numeroHabitacionActual, int numeroHabitacionNuevo, TipoHabitacion tipoHabitacion) {
         Habitacion habitacionExistente = obtenerHabitacion(numeroHabitacionActual);
@@ -167,17 +139,6 @@ public class Hotel implements IClienteCrud, IHabitacionCrud, IReservaCrud {
             return false;
         }
     }
-
-
-    @Override
-    public String obtenerDatosHabitacion(int numeroHabitacion) {
-        Habitacion habitacionExistente = obtenerHabitacion(numeroHabitacion);
-        if (habitacionExistente != null) {
-            return habitacionExistente.toString();
-        }
-        return "";
-    }
-
     private Habitacion obtenerHabitacion(int numeroHabitacion) {
         Habitacion habitacionExistente = null;
         for (Habitacion habitacion : getListaHabitaciones()) {
@@ -189,35 +150,41 @@ public class Hotel implements IClienteCrud, IHabitacionCrud, IReservaCrud {
         return habitacionExistente;
 
     }
+    @Override
+    public boolean eliminarHabitacion(int numeroHabitacion) {
+        Habitacion habitacionExistente = obtenerHabitacion(numeroHabitacion);
+        if (habitacionExistente != null) {
+            getListaHabitaciones().remove(habitacionExistente);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    @Override
+    public String obtenerDatosHabitacion(int numeroHabitacion) {
+        Habitacion habitacionExistente = obtenerHabitacion(numeroHabitacion);
+        if (habitacionExistente != null) {
+            return habitacionExistente.toString();
+        }
+        return "";
+    }
 
-    //LOGICA CRUD RESERVA---------------------------------------------------------------------------------
+    //LOGICA CRUD RESERVA
     @Override
     public boolean crearReserva(LocalDate fechaEntrada, LocalDate fechaSalida) {
         Reserva reservaExistente = obtenerReserva(fechaEntrada);
         if (reservaExistente == null) {
-            reservaExistente = Reserva
+            Reserva reserva = Reserva
                     .builder()
                     .fechaEntrada(fechaEntrada)
                     .fechaSalida(fechaSalida)
                     .build();
-            getListaReservas().add(reservaExistente);
+            getListaReservas().add(reserva);
             return true;
         } else {
             return false;
         }
     }
-
-    @Override
-    public boolean eliminarReserva(LocalDate fechaEntrada) {
-        Reserva reservaExistente = obtenerReserva(fechaEntrada);
-        if (reservaExistente != null) {
-            getListaReservas().remove(reservaExistente);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     @Override
     public boolean actualizarReserva(LocalDate fechaEntradaActual, LocalDate fechaEntradaNueva, LocalDate fechaSalida) {
         Reserva reservaExistente = obtenerReserva(fechaEntradaActual);
@@ -234,15 +201,23 @@ public class Hotel implements IClienteCrud, IHabitacionCrud, IReservaCrud {
             return false;
         }
     }
-
-
     @Override
     public String obtenerDatosReserva(LocalDate fechaEntrada) {
         Reserva reservaExistente = obtenerReserva(fechaEntrada);
         if (reservaExistente != null) {
-            return  reservaExistente.mostrarDatos();
+            return reservaExistente.mostrarDatos();
         }
-        return  "";
+        return "";
+    }
+    @Override
+    public boolean eliminarReserva(LocalDate fechaEntrada) {
+        Reserva reservaExistente = obtenerReserva(fechaEntrada);
+        if (reservaExistente != null) {
+            getListaReservas().remove(reservaExistente);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private Reserva obtenerReserva(LocalDate fechaEntrada) {
@@ -256,5 +231,42 @@ public class Hotel implements IClienteCrud, IHabitacionCrud, IReservaCrud {
         return reservaExistente;
 
     }
+//LOGICA FUNCIONALIDADES
+    @Override
+    public int contarReservasCliente(String dni) {
+
+        Cliente cliente = obtenerCliente(dni);
+        if (cliente != null)
+            return cliente.getListaReservasActivas().size();
+        else
+            return 0;
+
+    }
+    @Override
+    public double totalServicioHabitacion(int numeroHabitacion) {
+        double total = 0;
+        Habitacion habitacion = obtenerHabitacion(numeroHabitacion);
+        if (habitacion != null) {
+            for (Servicio servicio : habitacion.getListaServicios()) {
+
+                if (servicio.mostarTipo().equals("spa")) {
+                    total += servicio.getDiasContratados() * Spa.precio;
+                } else if (servicio.mostarTipo().equals("restaurante")) {
+                    total += servicio.getDiasContratados() * Restaurante.precio;
+                } else if (servicio.mostarTipo().equals("limpieza")) {
+                    total += servicio.getDiasContratados() * Limpieza.precio;
+                }
+
+            }
+        }
+        return total;
+    }
+
+    @Override
+    public int totalClientesHotel() {
+        return listaClientes.size();
+    }
+
+
 }
 

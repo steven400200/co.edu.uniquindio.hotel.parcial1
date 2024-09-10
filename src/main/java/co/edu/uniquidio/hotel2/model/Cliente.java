@@ -40,8 +40,8 @@ public class Cliente {
     public String toString() {
         return
                 "Nombre del cliente: " + nombre  +
-                "\nIdentificacion: " + dni  +
-                "\nReservas activas: " + listaReservasActivas ;
+                " ,identificacion: " + dni  +
+                "\nReservas activas:" + listaReservasActivas ;
     }
 
     public String mostraInfo() {

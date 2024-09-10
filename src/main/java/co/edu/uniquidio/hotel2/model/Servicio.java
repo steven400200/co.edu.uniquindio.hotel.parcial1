@@ -16,7 +16,8 @@ public abstract class Servicio implements IConsumible {
 
     @Override
     public String toString() {
-        return "Servicio:" +
-                "\nDias Contratados:" + diasContratados;
+        return " ,dias Contratados: " + diasContratados;
     }
+
+    public abstract String mostarTipo() ;
 }

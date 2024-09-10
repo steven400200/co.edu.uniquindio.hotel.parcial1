@@ -1,7 +1,7 @@
 package co.edu.uniquidio.hotel2.model;
 import co.edu.uniquidio.hotel2.model.builder.RestauranteBuilder;
 public class Restaurante extends Servicio{
-    private final double precio=40.0;
+    static final double precio=40.0;
 
     public Restaurante(int diasContratados) {
         super(diasContratados);
@@ -23,4 +23,11 @@ public class Restaurante extends Servicio{
         return "Restaurante:" +
                 "\nPrecio: $" + precio +super.toString();
     }
+
+    @Override
+    public String mostarTipo() {
+        return "restaurante";
+    }
+
+
 }

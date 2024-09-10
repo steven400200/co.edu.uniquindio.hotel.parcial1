@@ -2,7 +2,7 @@ package co.edu.uniquidio.hotel2.model;
 import co.edu.uniquidio.hotel2.model.builder.SpaBuilder;
 
 public class Spa extends Servicio{
-    private final double precio=20.0;
+    static final double precio=20.0;
 
     public Spa(int diasContratados) {
         super(diasContratados);
@@ -22,11 +22,13 @@ public class Spa extends Servicio{
     }
     @Override
     public String toString() {
-        return "Spa:" +
-                "\nPrecio: $" + precio+ super.toString();
+        return "Spa: Precio: $" + precio + super.toString();
     }
 
-
+    @Override
+    public String mostarTipo() {
+       return "spa";
+    }
 
 
 }

@@ -33,10 +33,12 @@ public class Habitacion {
 
     @Override
     public String toString() {
-        return "Habitacion{" +
-                "numeroHabitacion=" + numeroHabitacion +
-                ", tipoHabitacion=" + tipoHabitacion +
-                ", listaServicios=" + listaServicios +
-                '}';
+        return "\nnumero de Habitacion: " + numeroHabitacion +
+                " ,tipo de Habitacion: " + tipoHabitacion +
+                " \nLista de Servicios incluidos: " + listaServicios;
+    }
+    public String mostrarDato(){
+        return "Habitacion: "+"numero de habitacion"+numeroHabitacion+
+                "\nTipo de habitacion"+tipoHabitacion+listaServicios;
     }
 }

@@ -33,14 +33,12 @@ public class Reserva {
 
     @Override
     public String toString() {
-        return "\nReserva: " +
-                "\nFecha entrada: " + fechaEntrada +
+        return "Informacion reserva"+"\nFecha entrada: " + fechaEntrada +
                 "\nFecha salida:" + fechaSalida +
-                "\nHabitacion: " + habitacion ;
+                "\nIndormacion Habitacion " + habitacion ;
     }
     public String mostrarDatos() {
-        return "\nReserva: " +
-                "\nFecha entrada: " + fechaEntrada +
+        return "\nFecha entrada: " + fechaEntrada +
                 "\nFecha salida:" + fechaSalida ;
 
 }

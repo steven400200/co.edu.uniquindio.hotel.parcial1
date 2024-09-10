@@ -10,6 +10,11 @@ public class ServicioHabitacion extends Servicio {
         super(diasContratados);
     }
 
+    @Override
+    public String mostarTipo() {
+        return "servicioHabitacion";
+    }
+
     public static ServicioHabitacionBuilder builder(){
         return new ServicioHabitacionBuilder();
     }

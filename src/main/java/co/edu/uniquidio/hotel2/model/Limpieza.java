@@ -1,8 +1,9 @@
 package co.edu.uniquidio.hotel2.model;
+
 import co.edu.uniquidio.hotel2.model.builder.LimpiezaBuilder;
 
 public class Limpieza extends Servicio {
-private final double precio=30.0;
+    static final double precio = 30.0;
 
     @Override
     public void consumir() {
@@ -18,7 +19,7 @@ private final double precio=30.0;
         return precio;
     }
 
-    public static LimpiezaBuilder builder(){
+    public static LimpiezaBuilder builder() {
         return new LimpiezaBuilder();
     }
 
@@ -26,5 +27,10 @@ private final double precio=30.0;
     public String toString() {
         return "Limpieza" +
                 "\nPrecio: $" + precio + super.toString();
+    }
+
+    @Override
+    public String mostarTipo() {
+        return "limpieza";
     }
 }
