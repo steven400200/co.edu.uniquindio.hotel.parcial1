@@ -1,4 +1,4 @@
-package co.edu.uniquidio.hotel2.model;
+package co.edu.uniquidio.hotel2.services;
 
 public interface IConsumible {
 
