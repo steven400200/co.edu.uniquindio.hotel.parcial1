@@ -1,6 +1,4 @@
 package co.edu.uniquidio.hotel2.model.builder;
-
-import co.edu.uniquidio.hotel2.model.Cliente;
 import co.edu.uniquidio.hotel2.model.Habitacion;
 import co.edu.uniquidio.hotel2.model.Reserva;
 
@@ -13,17 +11,17 @@ public class ReservaBuilder {
 
     public ReservaBuilder fechaEntrada(LocalDate fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
-        return this; // Devuelve la instancia actual de ClienteBuilder
+        return this;
     }
 
     public ReservaBuilder fechaSalida(LocalDate fechaSalida) {
         this.fechaSalida = fechaSalida;
-        return this; // Devuelve la instancia actual de ClienteBuilder
+        return this;
     }
 
     public ReservaBuilder habitacion(Habitacion habitacion) {
         this.habitacion = habitacion;
-        return this; // Devuelve la instancia actual de ClienteBuilder
+        return this;
     }
 
     public Reserva build() {

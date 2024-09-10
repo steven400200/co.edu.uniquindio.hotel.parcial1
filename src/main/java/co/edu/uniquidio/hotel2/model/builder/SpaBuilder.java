@@ -1,6 +1,4 @@
 package co.edu.uniquidio.hotel2.model.builder;
-
-import co.edu.uniquidio.hotel2.model.Restaurante;
 import co.edu.uniquidio.hotel2.model.Spa;
 
 public class SpaBuilder {
@@ -11,7 +9,7 @@ public class SpaBuilder {
 
     public SpaBuilder diasContratados(int diasContratados) {
         this.diasContratados = diasContratados;
-        return this; // Devuelve la instancia actual de ClienteBuilder
+        return this;
     }
 
     public Spa build() {

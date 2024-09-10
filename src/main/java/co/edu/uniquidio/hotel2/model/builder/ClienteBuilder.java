@@ -7,11 +7,11 @@ public class ClienteBuilder {
 
     public ClienteBuilder nombre(String nombre) {
         this.nombre = nombre;
-        return this; // Devuelve la instancia actual de ClienteBuilder
+        return this;
     }
     public ClienteBuilder dni(String dni) {
         this.dni = dni;
-        return this; // Devuelve la instancia actual de ClienteBuilder
+        return this;
     }
 
     public Cliente build() {

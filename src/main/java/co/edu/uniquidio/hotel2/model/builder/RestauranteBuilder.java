@@ -1,5 +1,4 @@
 package co.edu.uniquidio.hotel2.model.builder;
-
 import co.edu.uniquidio.hotel2.model.Restaurante;
 
 public class RestauranteBuilder {
@@ -8,7 +7,7 @@ public class RestauranteBuilder {
 
     public RestauranteBuilder diasContratados(int diasContratados) {
         this.diasContratados = diasContratados;
-        return this; // Devuelve la instancia actual de ClienteBuilder
+        return this;
     }
 
     public Restaurante build() {

@@ -10,7 +10,7 @@ public class HotelBuilder {
 
     public HotelBuilder nombre(String nombre) {
         this.nombre = nombre;
-        return this; // Devuelve la instancia actual de ClienteBuilder
+        return this;
     }
 
     public Hotel build() {

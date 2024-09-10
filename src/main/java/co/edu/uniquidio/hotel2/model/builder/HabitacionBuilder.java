@@ -8,11 +8,11 @@ public class HabitacionBuilder {
 
     public HabitacionBuilder numeroHabitacion(int numeroHabitacion) {
         this.numeroHabitacion = numeroHabitacion;
-        return this; // Devuelve la instancia actual de ClienteBuilder
+        return this;
     }
     public HabitacionBuilder tipoHabitacion(TipoHabitacion tipoHabitacion) {
         this.tipoHabitacion = tipoHabitacion;
-        return this; // Devuelve la instancia actual de ClienteBuilder
+        return this;
     }
     public Habitacion build() {
         return new Habitacion (numeroHabitacion,tipoHabitacion);
